@@ -1,0 +1,58 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="title" type="String" default="  Opportunity Sentiment"/>
+    
+    <aura:attribute name="record" type="Object"
+                    description="The record object to be displayed"/>
+    <aura:attribute name="OpptyRecord" type="Object"
+                    description="A simplified view record object to be displayed"/>
+    <aura:attribute name="recordError" type="String"
+                    description="An error message bound to force:recordData"/>
+    <force:recordData aura:id="record"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.OpptyRecord}"
+                      mode="VIEW"/>
+    
+    <lightning:card title="Opportunity Sentiment">
+        
+        <aura:set attribute="title">
+            <lightning:icon iconName="utility:einstein" size="small"/> {!v.title }
+        </aura:set>
+                
+        <aura:if isTrue="{!v.OpptyRecord.Einstein_Sentiment__c == 'Neutral'}">
+          <div style="padding: .75rem 3rem;">   
+          <lightning:icon iconName="utility:sentiment_neutral" size="large" alternativeText="Indicates approval"/>
+              <br> </br>
+            <ui:outputText value="{!v.OpptyRecord.Einstein_Sentiment__c}"/>
+          </div>
+        </aura:if>
+       
+       <aura:if isTrue="{!v.OpptyRecord.Einstein_Sentiment__c == 'Negative'}">
+          <div style="padding: .75rem 3rem;">   
+         <lightning:icon iconName="utility:sentiment_negative" size="large" alternativeText="Indicates approval"/>
+              <br> </br>
+           <ui:outputText value="{!v.OpptyRecord.Einstein_Sentiment__c}"/>
+           </div>
+       </aura:if>
+            
+       <aura:if isTrue="{!v.OpptyRecord.Einstein_Sentiment__c == 'Positive'}">
+         <div style="padding: .75rem 3rem;">   
+         <lightning:icon iconName="utility:smiley_and_people" size="large" alternativeText="Indicates approval"/>
+              <br> </br>
+           <ui:outputText value="{!v.OpptyRecord.Einstein_Sentiment__c}"/>
+         </div>
+       </aura:if>
+             
+       <aura:if isTrue="{!v.OpptyRecord.Einstein_Sentiment__c == null}">
+         <div style="padding: .75rem 3rem;">   
+         <lightning:icon iconName="utility:question" size="large" alternativeText="Indicates approval"/>
+           </div>
+       </aura:if> 
+        <div style="padding: .80rem 3rem;">   
+         <lightning:formattedNumber value="{!v.OpptyRecord.Einstein_Sentiment_Rating__c}" style="percent" maximumFractionDigits="2" class="SentimentRating"/>
+        </div>        
+ </lightning:card>
+
+</aura:component>

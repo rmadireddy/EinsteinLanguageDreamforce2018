@@ -1,0 +1,41 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="title" type="String" default="  Case Intent"/>
+    
+    <aura:attribute name="record" type="Object"
+                    description="The record object to be displayed"/>
+    <aura:attribute name="CaseRecord" type="Object"
+                    description="A simplified view record object to be displayed"/>
+    <aura:attribute name="recordError" type="String"
+                    description="An error message bound to force:recordData"/>
+    <force:recordData aura:id="record"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.record}"
+                      targetFields="{!v.CaseRecord}"
+                      mode="VIEW"/>
+    
+    <lightning:card title="Case Intent">
+        
+        <aura:set attribute="title">
+            <lightning:icon iconName="utility:einstein" size="small"/> {!v.title }
+        </aura:set>
+                
+      <!--  <div class="slds-panel__header"><div class="slds-text-heading_small"> Sentiment</div></div> -->
+        
+        <div style="padding: .75rem 3rem;"> 
+            <div class="slds-text-heading_small">
+                <lightning:layout horizontalAlign="center">
+                    <lightning:layoutItem size="6">
+                        <ui:outputText value="{!v.CaseRecord.Einstein_Intent__c}"/>     
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="6">
+                        <lightning:formattedNumber value="{!v.CaseRecord.Einstein_Intent_Rating__c}" style="percent" maximumFractionDigits="2" class="IntentRating"/>
+                    </lightning:layoutItem>
+				</lightning:layout> 
+            </div>
+        </div>
+
+ </lightning:card>
+
+</aura:component>

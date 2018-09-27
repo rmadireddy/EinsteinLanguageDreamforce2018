@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>EinsteinIntentAPI</members>
+        <members>EinsteinLanguageRequest</members>
+        <members>EinsteinLanguageResponse</members>
+        <members>EinsteinLanguageTokenGenerator</members>
+        <members>EinsteinLanguageUtil</members>
+        <members>EinsteinSentimentAPI</members>
+        <members>EinsteinSentimentResponse</members>
+        <members>SentimentOfOpportunity</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>CaseTrigger</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>CaseIntentAnalysis</members>
+        <members>OpportunitySentimentAnalysis</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>Closed_Won_Opportunity_With_Positive_Sentiment-1</members>
+        <members>Sentiment_API_on_Opportunity_Task_Creation-2</members>
+        <name>Flow</name>
+    </types>
+    <version>36.0</version>
+</Package>
